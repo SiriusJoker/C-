@@ -1,1 +1,1 @@
-Leetcode easy
+CPP project for testing solutions for easy leetcode problems
