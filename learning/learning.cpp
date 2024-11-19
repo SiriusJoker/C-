@@ -62,29 +62,14 @@ public:
     }
     int removeDuplicates(vector<int>& nums) {
         int k = 0;
-        if (nums.size() > 0) {
-            k++;
-            int prev = nums[0];
-            for (int i = 1; i < nums.size(); i++) {
-                //prev = nums[i - 1];
-                if (nums[i] > prev) {
-                    k++;
-                    prev = nums[i];
-                }
-                else {
-                    for (int j = i + 1; j < nums.size(); j++) {
-                        if (nums[j] > prev) {
-                            k++;
-                            nums[i] = nums[j];
-                            prev = nums[j];
-                            break;
-                        }
-                    }
-                }
+        for (int i = 1; i < nums.size(); i++) {
+            if (nums[k] != nums[i])
+            {
+                nums[++k] = nums[i];
             }
         }
 
-        return k;
+        return k + 1;
     }
     int removeElement(vector<int>& nums, int val) {
         int k = 0;
@@ -131,7 +116,7 @@ public:
 int main()
 {
     Solution s;
-    string needle= "a";
+    
 
     cout << s.strStr(needle, needle);
 
