@@ -111,24 +111,78 @@ public:
         }
         return -1;
     }
+
+        vector<int> applyOperations(vector<int>& nums) {
+            if (nums.size() > 1)
+            {
+                int k = 0;
+                int j = 1;
+                for (int i = 0; i < nums.size() - 1; i++)
+                {
+                    if (j >= nums.size())
+                    {
+                        nums[k] = nums[nums.size() - 1];
+                        if(i== nums.size() - 2)
+                            nums[nums.size() - 1] = 0;
+                        nums[i] = 0;
+                    }
+                    else
+                    { 
+                    if (nums[i] == 0)
+                    {
+                        nums[i] = nums[i + 1];
+                        nums[i + 1] = 0;
+                        if (i + 2 < nums.size())
+                        {
+                            j = i + 2;
+                        }
+                    }
+                    if (nums[i] == nums[j] && nums[i] != 0)
+                    {
+                        nums[k] = 2 * nums[i];
+                        nums[j] = 0;
+                        k++;
+                        j++;
+                        if (i > k)
+                        {
+                            nums[i] = 0;
+                        }
+                    }
+                    else
+                    {
+                        if (nums[i] != 0) {
+                            nums[k] = nums[i];
+                            k++;
+                            if (i > k)
+                            {
+                                nums[i] = 0;
+                            }
+                        }
+                        j++;
+
+                    }
+                    }
+                }
+            }
+            return nums;
+        }
+        void printVecInt(vector<int>& nums)
+        {
+            for (int i = 0; i < nums.size(); i++)
+            {
+                cout << nums[i] << "\n";
+            }
+        }
+    
 };
 
 int main()
 {
     Solution s;
-    
+    vector<int> nums;
+    nums = { 847,847,0,0,0,399,416,416,879,879,206,206,206,272 };
 
-    cout << s.strStr(needle, needle);
+    s.applyOperations(nums);
+    s.printVecInt(nums);
 
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
