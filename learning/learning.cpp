@@ -181,7 +181,26 @@ public:
             }
             return running_Sum;
         }
-
+        //1672
+        int maximumWealth(vector<vector<int>>& accounts) {
+            if (accounts.size() < 1)
+                return 0;
+            int n = accounts.size();
+            int m = accounts[0].size();
+            int max = 0;
+            int temp = 0;
+            for (int i = 0; i < n; i++)
+            {
+                for (auto each : accounts[i])
+                {
+                    temp += each;
+                }
+                if (temp > max)
+                    max = temp;
+                temp = 0;
+            }
+            return max;
+        }
         void printVecInt(vector<int>& nums)
         {
             for (int i = 0; i < nums.size(); i++)
@@ -194,9 +213,9 @@ public:
 int main()
 {
     Solution s;
-    vector<int> nums;
-    nums = { 3,1,2,10,1 };
-    vector<int> nums1=s.runningSum(nums);
-    s.printVecInt(nums1);
+    vector<vector<int>> nums;
+    nums = { {1,2,3 }, { 3,2,1 } };
+    cout<<s.maximumWealth(nums);
+    //s.printVecInt(nums1);
 
 }
