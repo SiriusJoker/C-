@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include<vector>
+#include<string>
 using namespace std;
 
 class Solution {
@@ -182,6 +183,8 @@ public:
             return running_Sum;
         }
         //1672
+        //vector<vector<int>> nums;
+        //nums = { {1,2,3 }, { 3,2,1 } };
         int maximumWealth(vector<vector<int>>& accounts) {
             if (accounts.size() < 1)
                 return 0;
@@ -207,15 +210,32 @@ public:
             {
                 cout << nums[i] << "\n";
             }
-        }    
+        }
+        //412
+        vector<string> fizzBuzz(int n) {
+            vector<string> str(n);
+            for (int i = 1; i <= n; i++) {
+                if (i % 3 == 0) {
+                    if (i % 5 == 0)
+                        str[i - 1] = "FizzBuzz";
+                    else
+                        str[i - 1] = "Fizz";
+                }
+                else if (i % 5 == 0)
+                    str[i - 1] = "Buzz";
+                else
+                    str[i - 1] = to_string(i);
+            }
+
+            return str;
+        }
 };
 
 int main()
 {
     Solution s;
-    vector<vector<int>> nums;
-    nums = { {1,2,3 }, { 3,2,1 } };
-    cout<<s.maximumWealth(nums);
+
+    s.fizzBuzz(15);
     //s.printVecInt(nums1);
 
 }
