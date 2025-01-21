@@ -78,7 +78,7 @@ public:
             if (nums[i] == val && i < nums.size() - 1)
             {
                 nums[i] = nums[i + 1];
-                nums[nums.size() - 1 - i];
+                //nums[nums.size() - 1 - i];
             }
             else {
                 k++;
@@ -111,7 +111,8 @@ public:
         }
         return -1;
     }
-// 2460
+    // 2460
+    // test nums = { 847,847,0,0,0,399,416,416,879,879,206,206,206,272 };
         vector<int> applyOperations(vector<int>& nums) {
             if (nums.size() > 1)
             {
@@ -166,23 +167,36 @@ public:
             }
             return nums;
         }
+
+        //1480
+        vector<int> runningSum(vector<int>& nums) {
+            vector<int> running_Sum(nums.size());
+            for (int i = 0; i < nums.size(); i++)
+            {
+                running_Sum[i] += nums[i];
+                for (int j = i + 1; j < nums.size(); j++)
+                {
+                    running_Sum[j] += nums[i];
+                }
+            }
+            return running_Sum;
+        }
+
         void printVecInt(vector<int>& nums)
         {
             for (int i = 0; i < nums.size(); i++)
             {
                 cout << nums[i] << "\n";
             }
-        }
-    
+        }    
 };
 
 int main()
 {
     Solution s;
     vector<int> nums;
-    nums = { 847,847,0,0,0,399,416,416,879,879,206,206,206,272 };
-
-    s.applyOperations(nums);
-    s.printVecInt(nums);
+    nums = { 3,1,2,10,1 };
+    vector<int> nums1=s.runningSum(nums);
+    s.printVecInt(nums1);
 
 }
